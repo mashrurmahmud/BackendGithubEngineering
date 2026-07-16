@@ -1,10 +1,24 @@
 import { Router } from "express";
+import User from "../model/AuthModel.js";
 
 const router = Router();
 
 
-router.post('/register', (req, res) => {
-    res.send('register')
+router.post('/register', async(req, res) => {
+    
+    const {name, username, email, password} = req.body;
+    console.log(name, username)
+
+    if(!name || !username || !email || !password){
+        return res.status(400).json({message: "All fields are required", success: false})
+    }
+    const exist = await User.findOne({email})
+    if(exist){
+        return res.status(400).json({message: "User already exist", success: false})
+    }
+    const user = await User.create({name, username, email, password})
+    
+    res.status(201).json({user, success: true, message: "User created successfully"})
 })
 
 router.post('/login', (req, res) => {
