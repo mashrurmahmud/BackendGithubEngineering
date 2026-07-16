@@ -27,7 +27,9 @@ app.use('/job', jobrouter)
 app.use('/user', authRouter)
 
 
-
+app.get('/', (req, res) => {
+    res.send('hello world')
+})
 
 
 export default app
