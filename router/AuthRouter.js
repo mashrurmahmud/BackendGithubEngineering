@@ -10,3 +10,5 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res) => {
     res.send('login')
 })
+
+export default router
