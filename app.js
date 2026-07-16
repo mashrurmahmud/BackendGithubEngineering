@@ -2,6 +2,8 @@ import express from 'express'
 import dotenv from 'dotenv'
 import { connectDB } from './db/db.js'
 import cors from 'cors'
+import jobrouter from './router/JobRouter.js'
+import authRouter from './router/AuthRouter.js'
 
 dotenv.config()
 

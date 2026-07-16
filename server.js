@@ -1,4 +1,10 @@
-import { connectDB } from "./db/db"
+import app from "./app.js";
+import { connectDB } from "./db/db.js"
+
+import dotenv from 'dotenv'
+
+dotenv.config()
+const port = process.env.PORT
 
 
 
@@ -7,7 +13,16 @@ import { connectDB } from "./db/db"
 
 const startServer= async()=>{
     try{
-        await connectDB()
+        await connectDB();
+        app.listen(port, ()=>{
+            console.log(`Server is running on port ${port}`)
+        })
 
+    }catch(error){
+        console.log(error, "fail to load server")
+        process.exit(1)
     }
 }
+
+
+startServer()
