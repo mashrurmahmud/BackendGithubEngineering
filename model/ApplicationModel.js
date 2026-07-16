@@ -1,0 +1,25 @@
+import mongoose from "mongoose";
+
+
+
+
+const applicationSchema = new mongoose.Schema({
+    jobId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Jobportal",
+    },
+    userId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    },
+    appliedAt: {
+        type: Date,
+        default: Date.now
+    },
+})
+
+
+const Application = mongoose.model("Application", applicationSchema, "applications");
+
+export default Application;
+
