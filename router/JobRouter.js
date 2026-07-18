@@ -1,4 +1,5 @@
 import { Router } from "express";
+import job from "../model/JobModel.js";
 
 const router = Router();
 
@@ -9,11 +10,15 @@ router.post('/create-job', (req, res) => {
 })
 
 router.get('/get-jobs', async(req, res) => {
-    res.send('get-jobs')
+    const jobs = await job.find();
+    res.status(200).json({jobs})
 })
 
 router.get('/get-job/:id', async(req, res) => {
-    res.send('get-job')
+    const jobs = req.params.id;
+    console.log(jobs)
+    const jobhunter = await job.findById(jobs)
+    res.status(200).json({jobhunter})
 })
 
 export default router
