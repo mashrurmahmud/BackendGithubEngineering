@@ -22,7 +22,8 @@ router.post('/register', async(req, res) => {
     const user = await User.create({name, username, password, email})
     res.cookie('token', token, {httpOnly: true,
         
-        secure: true
+        secure: true,
+        sameSite: "none"
     })
     res.status(201).json({user, success: true, message: "User created successfully"})
 })
