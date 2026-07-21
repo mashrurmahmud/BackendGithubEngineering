@@ -9,7 +9,7 @@ const router = Router();
 router.post('/register', async(req, res) => {
     
     const {name, username, email, password} = req.body;
-    console.log(name, username)
+    console.log(name, username,password)
 
     if(!name || !username || !email || !password){
         return res.status(400).json({message: "All fields are required", success: false})
@@ -18,8 +18,8 @@ router.post('/register', async(req, res) => {
     if(exist){
         return res.status(400).json({message: "User already exist", success: false})
     }
-    const token = await jwt.sign({email, password}, process.env.JWT_SECRET, {expiresIn: "1d"})
-    const user = await User.create({name, username, email})
+    const token = await jwt.sign({email,password}, process.env.JWT_SECRET, {expiresIn: "1d"})
+    const user = await User.create({name, username, password, email})
     res.cookie('token', token, {httpOnly: true,
         
         secure: true

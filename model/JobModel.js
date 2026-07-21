@@ -2,63 +2,43 @@ import mongoose from "mongoose";
 
 
 
-
-
-const jobSchema = mongoose.Schema({
-    title:{
+const jobschema =  mongoose.Schema({
+    title: {
         type: String,
         required: true
     },
-    company:{
+    company: {
         type: String,
         required: true
     },
-    location:{
+    location: {
         type: String,
         required: true
     },
-    type:{
+    type: {
         type: String,
         required: true
     },
-    salary:{
+    salary: {
         type: String,
         required: true
     },
-    experience:{
-        type: String,
-        required: true
-    },
-    description:{
-        type: String,
-        required: true
-    },
-    date: {
-        type: Date,
-        default: Date.now
-    },
-    skills:{
-        type:[String],
-        required: true
-    },
-    logo:{
-        type: String,
-        required: true
-    },
-    benefits:{
-        type:[String],
-        required: true
-    },
-    posted:{
-        type: Date,
-        default: Date.now
-    }
    
+    description: {
+        type: String,
+        required: true
+    },
+    experience: {
+        type: [String],
+        required: true
+    },
 },{
     timestamps: true
 })
 
 
-const job = mongoose.model('Job', jobSchema);
 
-export default job;
+const jobs = mongoose.model("jobPortal", jobschema);
+
+
+export default jobs;

@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 const applicationSchema = new mongoose.Schema({
     jobId:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Jobportal",
+        ref: "Job",
     },
     userId:{
         type: mongoose.Schema.Types.ObjectId,
